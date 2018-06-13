@@ -9,6 +9,7 @@ export const getForecast = () => {
 
 export const parseResponse = data => {
   const newState = [];
+  console.log(data)
   data.list.forEach(city => {
     newState.push({
       name: city.name,
@@ -16,6 +17,7 @@ export const parseResponse = data => {
       humidity: city.main.humidity,
       description: city.weather[0].description,
       wind: city.wind.speed,
+      icon: city.weather[0].icon,
     });
   });
   return newState;

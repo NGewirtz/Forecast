@@ -22162,9 +22162,13 @@ var _NavBar = __webpack_require__(188);
 
 var _NavBar2 = _interopRequireDefault(_NavBar);
 
-var _CitiesContainer = __webpack_require__(191);
+var _TopPanel = __webpack_require__(195);
 
-var _CitiesContainer2 = _interopRequireDefault(_CitiesContainer);
+var _TopPanel2 = _interopRequireDefault(_TopPanel);
+
+var _CitiesQuickviewContainer = __webpack_require__(193);
+
+var _CitiesQuickviewContainer2 = _interopRequireDefault(_CitiesQuickviewContainer);
 
 var _Footer = __webpack_require__(186);
 
@@ -22211,7 +22215,8 @@ var Home = function (_React$Component) {
         'main',
         null,
         _react2.default.createElement(_NavBar2.default, null),
-        _react2.default.createElement(_CitiesContainer2.default, { forecasts: this.state.forecasts }),
+        _react2.default.createElement(_TopPanel2.default, null),
+        _react2.default.createElement(_CitiesQuickviewContainer2.default, { forecasts: this.state.forecasts }),
         _react2.default.createElement(_Footer2.default, null)
       );
     }
@@ -22332,13 +22337,15 @@ var getForecast = exports.getForecast = function getForecast() {
 
 var parseResponse = exports.parseResponse = function parseResponse(data) {
   var newState = [];
+  console.log(data);
   data.list.forEach(function (city) {
     newState.push({
       name: city.name,
       temp: city.main.temp,
       humidity: city.main.humidity,
       description: city.weather[0].description,
-      wind: city.wind.speed
+      wind: city.wind.speed,
+      icon: city.weather[0].icon
     });
   });
   return newState;
@@ -22363,7 +22370,9 @@ var cities = exports.cities = {
 };
 
 /***/ }),
-/* 191 */
+/* 191 */,
+/* 192 */,
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22377,22 +22386,22 @@ var _react = __webpack_require__(82);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _City = __webpack_require__(192);
+var _CityQuickviewItem = __webpack_require__(194);
 
-var _City2 = _interopRequireDefault(_City);
+var _CityQuickviewItem2 = _interopRequireDefault(_CityQuickviewItem);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var CitiesContainer = function CitiesContainer(_ref) {
+var CitiesQuickviewContainer = function CitiesQuickviewContainer(_ref) {
   var forecasts = _ref.forecasts;
 
   var cities = forecasts.map(function (forecast) {
-    return _react2.default.createElement(_City2.default, { forecast: forecast, key: forecast.name });
+    return _react2.default.createElement(_CityQuickviewItem2.default, { forecast: forecast, key: forecast.name });
   });
 
   return _react2.default.createElement(
     'section',
-    null,
+    { className: 'quickview-section' },
     _react2.default.createElement(
       'ul',
       null,
@@ -22401,10 +22410,10 @@ var CitiesContainer = function CitiesContainer(_ref) {
   );
 };
 
-exports.default = CitiesContainer;
+exports.default = CitiesQuickviewContainer;
 
 /***/ }),
-/* 192 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22420,45 +22429,59 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var City = function City(_ref) {
+var CityQuickviewItem = function CityQuickviewItem(_ref) {
   var forecast = _ref.forecast;
 
   return _react2.default.createElement(
-    'div',
-    null,
+    "div",
+    { className: "quickview-div" },
     _react2.default.createElement(
-      'h2',
+      "h2",
       null,
       forecast.name
     ),
     _react2.default.createElement(
-      'h4',
+      "h4",
       null,
-      forecast.description
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Temperature ',
       forecast.temp,
-      ' F'
+      " F"
     ),
+    _react2.default.createElement("img", { src: "http://openweathermap.org/img/w/" + forecast.icon + ".png" })
+  );
+};
+
+exports.default = CityQuickviewItem;
+
+/***/ }),
+/* 195 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(82);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var TopPanel = function TopPanel() {
+  return _react2.default.createElement(
+    "section",
+    { className: "top-panel" },
     _react2.default.createElement(
-      'h4',
+      "h1",
       null,
-      'Humidity ',
-      forecast.humidity
-    ),
-    _react2.default.createElement(
-      'h4',
-      null,
-      'Wind ',
-      forecast.wind
+      "Five City Forecast"
     )
   );
 };
 
-exports.default = City;
+exports.default = TopPanel;
 
 /***/ })
 /******/ ]);

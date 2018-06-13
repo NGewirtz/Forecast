@@ -1,3 +1,21 @@
+html, body, footer, nav, div, section, main, ul, li {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: inherit;
+  font: inherit;
+  text-decoration: inherit;
+  text-align: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+ul {
+  list-style: none;
+}
+/* CSS Reset */
+
 nav {
   height: 50px;
   background-color: #8585d2;
@@ -6,7 +24,6 @@ nav {
 nav ul {
   display: flex;
   justify-content: space-between;
-  list-style-type: none;
   padding: 5px 35px;
 }
 
@@ -36,4 +53,32 @@ li:hover .city-nav {
 
 .city-nav:hover {
   background-color: blue;
+}
+
+.top-panel {
+  background-color: grey;
+  height: 300px;
+}
+
+.quickview-section ul {
+  display: flex;
+  justify-content: space-between;
+  padding: 35px;
+}
+
+.quickview-div {
+  text-align: center;
+}
+
+footer {
+  height: 150px;
+  background-color: #8585d2;
+}
+
+
+@media (max-width: 599px) {
+  .quickview-section ul {
+    flex-direction: column;
+    text-align: left;
+  }
 }
