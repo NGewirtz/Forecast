@@ -9,7 +9,6 @@ export const getForecast = () => {
 
 export const parseResponse = data => {
   const newState = [];
-  console.log(data)
   data.list.forEach(city => {
     newState.push({
       name: city.name,
