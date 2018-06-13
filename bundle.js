@@ -22269,9 +22269,19 @@ var _react = __webpack_require__(82);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _cities = __webpack_require__(190);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var NavBar = function NavBar() {
+  var dropdownElements = Object.keys(_cities.cities).map(function (city) {
+    return _react2.default.createElement(
+      'li',
+      { className: 'city-nav', key: city },
+      city,
+      ' '
+    );
+  });
   return _react2.default.createElement(
     'nav',
     null,
@@ -22281,7 +22291,12 @@ var NavBar = function NavBar() {
       _react2.default.createElement(
         'li',
         null,
-        'Home'
+        'Cities',
+        _react2.default.createElement(
+          'ul',
+          { className: 'city-dropdown' },
+          dropdownElements
+        )
       ),
       _react2.default.createElement(
         'li',
@@ -22341,9 +22356,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 var cities = exports.cities = {
   "New York": 5128638,
-  "Los Angeles": 3882428,
-  "Chicago": 3582383,
-  "Houston": 5977783,
+  "Los Angeles": 5368361,
+  "Chicago": 4887398,
+  "Houston": 4699066,
   "Philadelphia": 4560349
 };
 
@@ -22420,6 +22435,25 @@ var City = function City(_ref) {
       'h4',
       null,
       forecast.description
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Temperature ',
+      forecast.temp,
+      ' F'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Humidity ',
+      forecast.humidity
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Wind ',
+      forecast.wind
     )
   );
 };

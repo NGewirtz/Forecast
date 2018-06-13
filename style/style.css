@@ -1,0 +1,39 @@
+nav {
+  height: 50px;
+  background-color: #8585d2;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 5px 35px;
+}
+
+li:hover .city-nav {
+  display: block;
+}
+
+.city-dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.city-dropdown > li {
+  position: relative;
+}
+
+.city-nav {
+  display: none;
+  position: absolute;
+  background: #3f3fbf;
+  border: 1px solid white;
+  width: 120px;
+  color: white;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.city-nav:hover {
+  background-color: blue;
+}
