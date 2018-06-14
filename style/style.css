@@ -57,7 +57,7 @@ li:hover .city-nav {
   flex-direction: column;
 }
 
-.city-dropdown > li {
+.city-dropdown > a {
   position: relative;
 }
 
@@ -75,9 +75,6 @@ li:hover .city-nav {
 
 .city-nav:hover {
   background-color: #00688b;
-}
-
-.city-nav a:hover, .city-nav li:hover {
   color: white;
 }
 

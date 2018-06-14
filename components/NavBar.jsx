@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom';
 const NavBar = () => {
   const dropdownElements = Object.keys(cities).map(city => {
     return (
-      <li className="city-nav" key={city}>
-        <Link to={city}>{city}</Link>
-      </li>
+      <Link to={city} className="city-nav" key={city}>{city}</Link>
     );
   });
   return (

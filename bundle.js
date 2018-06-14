@@ -22258,13 +22258,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var NavBar = function NavBar() {
   var dropdownElements = Object.keys(_cities.cities).map(function (city) {
     return _react2.default.createElement(
-      'li',
-      { className: 'city-nav', key: city },
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: city },
-        city
-      )
+      _reactRouterDom.Link,
+      { to: city, className: 'city-nav', key: city },
+      city
     );
   });
   return _react2.default.createElement(
