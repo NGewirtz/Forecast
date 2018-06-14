@@ -14,7 +14,7 @@ export const parseResponse = data => {
       name: city.name,
       temp: city.main.temp,
       humidity: city.main.humidity,
-      description: city.weather[0].description,
+      description: city.weather[0].main,
       wind: city.wind.speed,
       icon: city.weather[0].icon,
     });

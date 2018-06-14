@@ -45,6 +45,10 @@ nav li {
   padding: 10px 100px 10px 0;
 }
 
+h1 {
+  font-size: 40px;
+}
+
 li:hover .city-nav {
   display: block;
 }
@@ -82,7 +86,7 @@ li:hover .city-nav {
   color: white;
 }
 
-.top-panel {
+.top-panel, .city-show-div {
   background-image: url("../assets/sky.jpg");
   height: 300px;
   color: white;
@@ -91,7 +95,6 @@ li:hover .city-nav {
 }
 
 .top-panel h1 {
-  font-size: 36px;
   text-align: center;
   padding-top: 120px;
 }
@@ -118,11 +121,26 @@ li:hover .city-nav {
   color: #00688b;
 }
 
+.city-show-div {
+  text-align: center;
+  font-family: 'Concert One', cursive;
+}
+
+.city-show-div h3 {
+  padding-top: 5px;
+  font-size: 24px;
+}
+
+.city-show-div img {
+  padding-top: 10px;
+  width: 80px;
+}
+
 footer {
   height: 150px;
   background-color: #00688b;
   color: white;
-  padding: 35px;
+  padding: 50px 0 0 35px;
 }
 
 footer a:hover {

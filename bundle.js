@@ -22363,7 +22363,7 @@ var parseResponse = exports.parseResponse = function parseResponse(data) {
       name: city.name,
       temp: city.main.temp,
       humidity: city.main.humidity,
-      description: city.weather[0].description,
+      description: city.weather[0].main,
       wind: city.wind.speed,
       icon: city.weather[0].icon
     });
@@ -26184,36 +26184,36 @@ var CityShow = function CityShow(_ref) {
   var forecast = _ref.forecast;
 
   return _react2.default.createElement(
-    'div',
-    null,
+    "div",
+    { className: "city-show-div" },
     _react2.default.createElement(
-      'h2',
+      "h1",
       null,
       forecast.name
     ),
-    _react2.default.createElement('img', { src: 'http://openweathermap.org/img/w/' + forecast.icon + '.png' }),
+    _react2.default.createElement("img", { src: "http://openweathermap.org/img/w/" + forecast.icon + ".png" }),
     _react2.default.createElement(
-      'h4',
+      "h3",
       null,
       forecast.description
     ),
     _react2.default.createElement(
-      'h4',
+      "h3",
       null,
-      'Temperature ',
+      "Temperature ",
       forecast.temp,
-      ' F'
+      " F"
     ),
     _react2.default.createElement(
-      'h4',
+      "h3",
       null,
-      'Humidity ',
+      "Humidity ",
       forecast.humidity
     ),
     _react2.default.createElement(
-      'h4',
+      "h3",
       null,
-      'Wind ',
+      "Wind ",
       forecast.wind
     )
   );
