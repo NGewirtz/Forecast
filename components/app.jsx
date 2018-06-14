@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './Home';
+import Root from './Root';
 
 document.addEventListener('DOMContentLoaded', function () {
-  ReactDOM.render(<Home />, document.getElementById('main'));
+  ReactDOM.render(<Root />, document.getElementById('main'));
 });

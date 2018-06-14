@@ -9621,14 +9621,14 @@ var _reactDom = __webpack_require__(81);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _Home = __webpack_require__(185);
+var _Root = __webpack_require__(240);
 
-var _Home2 = _interopRequireDefault(_Home);
+var _Root2 = _interopRequireDefault(_Root);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 document.addEventListener('DOMContentLoaded', function () {
-  _reactDom2.default.render(_react2.default.createElement(_Home2.default, null), document.getElementById('main'));
+  _reactDom2.default.render(_react2.default.createElement(_Root2.default, null), document.getElementById('main'));
 });
 
 /***/ }),
@@ -22158,10 +22158,6 @@ var _react = __webpack_require__(82);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _NavBar = __webpack_require__(188);
-
-var _NavBar2 = _interopRequireDefault(_NavBar);
-
 var _TopPanel = __webpack_require__(195);
 
 var _TopPanel2 = _interopRequireDefault(_TopPanel);
@@ -22170,13 +22166,7 @@ var _CitiesQuickviewContainer = __webpack_require__(193);
 
 var _CitiesQuickviewContainer2 = _interopRequireDefault(_CitiesQuickviewContainer);
 
-var _Footer = __webpack_require__(186);
-
-var _Footer2 = _interopRequireDefault(_Footer);
-
 var _ajax = __webpack_require__(189);
-
-var _reactRouterDom = __webpack_require__(228);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22207,27 +22197,16 @@ var Home = function (_React$Component) {
 
       (0, _ajax.getForecast)().then(function (data) {
         _this2.setState({ forecasts: (0, _ajax.parseResponse)(data) });
-        console.log(_this2.state);
       });
     }
   }, {
     key: 'render',
     value: function render() {
-      var routes = this.state.forecasts.map(function (city) {
-        return _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/' + city.name, component: _Footer2.default });
-      });
       return _react2.default.createElement(
-        _reactRouterDom.HashRouter,
+        'div',
         null,
-        _react2.default.createElement(
-          'main',
-          null,
-          _react2.default.createElement(_NavBar2.default, null),
-          _react2.default.createElement(_TopPanel2.default, null),
-          _react2.default.createElement(_CitiesQuickviewContainer2.default, { forecasts: this.state.forecasts }),
-          routes,
-          _react2.default.createElement(_Footer2.default, null)
-        )
+        _react2.default.createElement(_TopPanel2.default, null),
+        _react2.default.createElement(_CitiesQuickviewContainer2.default, { forecasts: this.state.forecasts })
       );
     }
   }]);
@@ -26040,6 +26019,169 @@ function valueEqual(a, b) {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (valueEqual);
+
+/***/ }),
+/* 239 */,
+/* 240 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(82);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _NavBar = __webpack_require__(188);
+
+var _NavBar2 = _interopRequireDefault(_NavBar);
+
+var _CityShow = __webpack_require__(241);
+
+var _CityShow2 = _interopRequireDefault(_CityShow);
+
+var _Home = __webpack_require__(185);
+
+var _Home2 = _interopRequireDefault(_Home);
+
+var _Footer = __webpack_require__(186);
+
+var _Footer2 = _interopRequireDefault(_Footer);
+
+var _reactRouterDom = __webpack_require__(228);
+
+var _ajax = __webpack_require__(189);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Root = function (_React$Component) {
+  _inherits(Root, _React$Component);
+
+  function Root() {
+    _classCallCheck(this, Root);
+
+    var _this = _possibleConstructorReturn(this, (Root.__proto__ || Object.getPrototypeOf(Root)).call(this));
+
+    _this.state = {
+      forecasts: []
+    };
+    return _this;
+  }
+
+  _createClass(Root, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      (0, _ajax.getForecast)().then(function (data) {
+        _this2.setState({ forecasts: (0, _ajax.parseResponse)(data) });
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var routes = this.state.forecasts.map(function (city) {
+        return _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/' + city.name,
+          component: function component() {
+            return _react2.default.createElement(_CityShow2.default, { forecast: city });
+          },
+          key: city.name
+        });
+      });
+
+      return _react2.default.createElement(
+        _reactRouterDom.HashRouter,
+        null,
+        _react2.default.createElement(
+          'main',
+          null,
+          _react2.default.createElement(_NavBar2.default, null),
+          _react2.default.createElement(
+            _reactRouterDom.Switch,
+            null,
+            routes,
+            _react2.default.createElement(_reactRouterDom.Route, { component: _Home2.default })
+          ),
+          _react2.default.createElement(_Footer2.default, null)
+        )
+      );
+    }
+  }]);
+
+  return Root;
+}(_react2.default.Component);
+
+exports.default = Root;
+
+/***/ }),
+/* 241 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(82);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CityShow = function CityShow(_ref) {
+  var forecast = _ref.forecast;
+
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'h2',
+      null,
+      forecast.name
+    ),
+    _react2.default.createElement('img', { src: 'http://openweathermap.org/img/w/' + forecast.icon + '.png' }),
+    _react2.default.createElement(
+      'h4',
+      null,
+      forecast.description
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Temperature ',
+      forecast.temp,
+      ' F'
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Humidity ',
+      forecast.humidity
+    ),
+    _react2.default.createElement(
+      'h4',
+      null,
+      'Wind ',
+      forecast.wind
+    )
+  );
+};
+
+exports.default = CityShow;
 
 /***/ })
 /******/ ]);

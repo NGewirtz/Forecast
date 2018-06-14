@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   context: __dirname,
-  entry: "./components/app.jsx",
+  entry: "./components/App.jsx",
   output: {
     path: path.resolve(__dirname),
     filename: "bundle.js"

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const City = ({forecast}) => {
+const CityShow = ({forecast}) => {
   return (
     <div>
       <h2>{forecast.name}</h2>
@@ -13,4 +13,4 @@ const City = ({forecast}) => {
   );
 };
 
-export default City;
+export default CityShow;
