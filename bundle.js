@@ -22235,12 +22235,35 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Footer = function Footer() {
   return _react2.default.createElement(
-    'footer',
+    "footer",
     null,
     _react2.default.createElement(
-      'h3',
+      "h3",
       null,
-      'Copyright 2018'
+      _react2.default.createElement(
+        "a",
+        { href: "http://www.neilgewirtz.com/", target: "_blank" },
+        "Neil Gewirtz"
+      )
+    ),
+    _react2.default.createElement(
+      "section",
+      null,
+      _react2.default.createElement(
+        "a",
+        { href: "https://www.linkedin.com/in/neilgewirtz/", target: "_blank" },
+        _react2.default.createElement("i", { className: "fab fa-linkedin-in" })
+      ),
+      _react2.default.createElement(
+        "a",
+        { href: "https://github.com/NGewirtz", target: "_blank" },
+        _react2.default.createElement("i", { className: "fab fa-github" })
+      ),
+      _react2.default.createElement(
+        "a",
+        { href: "https://s3.us-east-2.amazonaws.com/cheers-the-app/ResumeNeilGewirtz.pdf", target: "_blank" },
+        _react2.default.createElement("i", { className: "fas fa-clipboard" })
+      )
     )
   );
 };
@@ -22276,7 +22299,7 @@ var NavBar = function NavBar() {
       { className: 'city-nav', key: city },
       _react2.default.createElement(
         _reactRouterDom.Link,
-        { to: '/' + city },
+        { to: city },
         city
       )
     );
@@ -22286,7 +22309,16 @@ var NavBar = function NavBar() {
     null,
     _react2.default.createElement(
       'ul',
-      null,
+      { className: 'nav-links' },
+      _react2.default.createElement(
+        'li',
+        null,
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/' },
+          'Home'
+        )
+      ),
       _react2.default.createElement(
         'li',
         null,
@@ -22295,15 +22327,6 @@ var NavBar = function NavBar() {
           'ul',
           { className: 'city-dropdown' },
           dropdownElements
-        )
-      ),
-      _react2.default.createElement(
-        'li',
-        null,
-        _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/' },
-          'Home'
         )
       )
     )
@@ -22424,26 +22447,32 @@ var _react = __webpack_require__(82);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(228);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var CityQuickviewItem = function CityQuickviewItem(_ref) {
   var forecast = _ref.forecast;
 
   return _react2.default.createElement(
-    "div",
-    { className: "quickview-div" },
+    'li',
+    { className: 'quickview-item' },
     _react2.default.createElement(
-      "h2",
+      'h2',
       null,
-      forecast.name
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: forecast.name },
+        forecast.name
+      )
     ),
     _react2.default.createElement(
-      "h4",
+      'h4',
       null,
       forecast.temp,
-      " F"
+      ' F'
     ),
-    _react2.default.createElement("img", { src: "http://openweathermap.org/img/w/" + forecast.icon + ".png" })
+    _react2.default.createElement('img', { src: 'http://openweathermap.org/img/w/' + forecast.icon + '.png' })
   );
 };
 
@@ -22473,7 +22502,7 @@ var TopPanel = function TopPanel() {
     _react2.default.createElement(
       "h1",
       null,
-      "Five City Forecast"
+      "Weather Around The U.S."
     )
   );
 };

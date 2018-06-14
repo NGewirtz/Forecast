@@ -6,21 +6,21 @@ const NavBar = () => {
   const dropdownElements = Object.keys(cities).map(city => {
     return (
       <li className="city-nav" key={city}>
-        <Link to={`/${city}`}>{city}</Link>
+        <Link to={city}>{city}</Link>
       </li>
     );
   });
   return (
     <nav>
-      <ul>
+      <ul className="nav-links">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
         <li>
           Cities
           <ul className="city-dropdown">
             {dropdownElements}
           </ul>
-        </li>
-        <li>
-          <Link to="/">Home</Link>
         </li>
       </ul>
     </nav>

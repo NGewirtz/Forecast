@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CityQuickviewItem = ({forecast}) => {
   return (
-    <div className="quickview-div">
-      <h2>{forecast.name}</h2>
+    <li className="quickview-item">
+      <h2><Link to={forecast.name}>{forecast.name}</Link></h2>
       <h4>{forecast.temp} F</h4>
       <img src={`http://openweathermap.org/img/w/${forecast.icon}.png`}/>
-    </div>
+    </li>
   );
 };
 

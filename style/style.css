@@ -29,18 +29,28 @@ a {
 /* CSS Reset */
 
 nav {
-  height: 50px;
-  background-color: #8585d2;
+  height: 55px;
+  background-color: white;
+  font-family: 'Concert One', cursive;
+  color: #87CEFA;
+  font-size: 20px;
 }
 
 nav ul {
   display: flex;
-  justify-content: space-between;
   padding: 5px 35px;
+}
+
+nav li {
+  padding: 10px 100px 10px 0;
 }
 
 li:hover .city-nav {
   display: block;
+}
+
+.quickview-item h2:hover, .nav-links > li:hover{
+  color: #00688b;
 }
 
 .city-dropdown {
@@ -55,21 +65,35 @@ li:hover .city-nav {
 .city-nav {
   display: none;
   position: absolute;
-  background: #3f3fbf;
+  background: #87CEFA;
   border: 1px solid white;
   width: 120px;
-  color: white;
   padding: 5px;
   cursor: pointer;
+  font-size: 18px;
+  color: white;
 }
 
 .city-nav:hover {
-  background-color: blue;
+  background-color: #00688b;
+}
+
+.city-nav a:hover, .city-nav li:hover {
+  color: white;
 }
 
 .top-panel {
   background-image: url("../assets/sky.jpg");
   height: 300px;
+  color: white;
+  padding: 35px;
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.top-panel h1 {
+  font-size: 36px;
+  text-align: center;
+  padding-top: 120px;
 }
 
 .quickview-section ul {
@@ -78,13 +102,36 @@ li:hover .city-nav {
   padding: 35px;
 }
 
-.quickview-div {
+.quickview-item {
   text-align: center;
+  font-family: 'Concert One', cursive;
+}
+
+.quickview-item h2 {
+  color: #87CEFA;
+  padding-bottom: 20px;
+}
+
+.quickview-item h4 {
+  font-size: 20px;
+  padding-bottom: 20px;
+  color: #00688b;
 }
 
 footer {
   height: 150px;
-  background-color: #8585d2;
+  background-color: #00688b;
+  color: white;
+  padding: 35px;
+}
+
+footer a:hover {
+  color: #87CEFA;
+}
+
+.fab, .fas {
+  font-size: 20px;
+  padding: 20px 20px 0 2px;
 }
 
 
@@ -93,4 +140,14 @@ footer {
     flex-direction: column;
     text-align: left;
   }
+
+  .top-panel {
+    height: 200px;
+  }
+
+  .top-panel h1 {
+    padding-top: 80px;
+    font-size: 28px;
+  }
+
 }
