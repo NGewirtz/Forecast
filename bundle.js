@@ -22265,6 +22265,8 @@ var _react2 = _interopRequireDefault(_react);
 
 var _cities = __webpack_require__(190);
 
+var _reactRouterDom = __webpack_require__(228);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var NavBar = function NavBar() {
@@ -22272,8 +22274,11 @@ var NavBar = function NavBar() {
     return _react2.default.createElement(
       'li',
       { className: 'city-nav', key: city },
-      city,
-      ' '
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: '/' + city },
+        city
+      )
     );
   });
   return _react2.default.createElement(
@@ -22295,7 +22300,11 @@ var NavBar = function NavBar() {
       _react2.default.createElement(
         'li',
         null,
-        'Home'
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/' },
+          'Home'
+        )
       )
     )
   );
