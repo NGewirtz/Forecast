@@ -36,7 +36,7 @@ class Root extends React.Component {
           <NavBar />
           <Switch>
             {routes}
-            <Route component={Home} />
+            <Route component={() => <Home forecasts={this.state.forecasts}/>} />
           </Switch>
           <Footer />
         </main>

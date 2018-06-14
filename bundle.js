@@ -22152,8 +22152,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _react = __webpack_require__(82);
 
 var _react2 = _interopRequireDefault(_react);
@@ -22166,53 +22164,18 @@ var _CitiesQuickviewContainer = __webpack_require__(193);
 
 var _CitiesQuickviewContainer2 = _interopRequireDefault(_CitiesQuickviewContainer);
 
-var _ajax = __webpack_require__(189);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var Home = function Home(_ref) {
+  var forecasts = _ref.forecasts;
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Home = function (_React$Component) {
-  _inherits(Home, _React$Component);
-
-  function Home() {
-    _classCallCheck(this, Home);
-
-    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
-
-    _this.state = {
-      forecasts: []
-    };
-    return _this;
-  }
-
-  _createClass(Home, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      (0, _ajax.getForecast)().then(function (data) {
-        _this2.setState({ forecasts: (0, _ajax.parseResponse)(data) });
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(_TopPanel2.default, null),
-        _react2.default.createElement(_CitiesQuickviewContainer2.default, { forecasts: this.state.forecasts })
-      );
-    }
-  }]);
-
-  return Home;
-}(_react2.default.Component);
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(_TopPanel2.default, null),
+    _react2.default.createElement(_CitiesQuickviewContainer2.default, { forecasts: forecasts })
+  );
+};
 
 exports.default = Home;
 
@@ -26133,6 +26096,8 @@ var Root = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _this3 = this;
+
       var routes = this.state.forecasts.map(function (city) {
         return _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/' + city.name,
           component: function component() {
@@ -26153,7 +26118,9 @@ var Root = function (_React$Component) {
             _reactRouterDom.Switch,
             null,
             routes,
-            _react2.default.createElement(_reactRouterDom.Route, { component: _Home2.default })
+            _react2.default.createElement(_reactRouterDom.Route, { component: function component() {
+                return _react2.default.createElement(_Home2.default, { forecasts: _this3.state.forecasts });
+              } })
           ),
           _react2.default.createElement(_Footer2.default, null)
         )
