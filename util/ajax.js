@@ -17,6 +17,7 @@ export const parseResponse = data => {
       description: city.weather[0].main,
       wind: city.wind.speed,
       icon: city.weather[0].icon,
+      title: city.weather[0].description
     });
   });
   return newState;

@@ -6,7 +6,9 @@ const CityQuickviewItem = ({forecast}) => {
     <li className="quickview-item">
       <h2><Link to={forecast.name}>{forecast.name}</Link></h2>
       <h4>{forecast.temp} F</h4>
-      <img src={`http://openweathermap.org/img/w/${forecast.icon}.png`}/>
+      <img src={`http://openweathermap.org/img/w/${forecast.icon}.png`}
+        title={forecast.title}
+      />
     </li>
   );
 };

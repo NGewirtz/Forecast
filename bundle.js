@@ -22365,7 +22365,8 @@ var parseResponse = exports.parseResponse = function parseResponse(data) {
       humidity: city.main.humidity,
       description: city.weather[0].main,
       wind: city.wind.speed,
-      icon: city.weather[0].icon
+      icon: city.weather[0].icon,
+      title: city.weather[0].description
     });
   });
   return newState;
@@ -22472,7 +22473,9 @@ var CityQuickviewItem = function CityQuickviewItem(_ref) {
       forecast.temp,
       ' F'
     ),
-    _react2.default.createElement('img', { src: 'http://openweathermap.org/img/w/' + forecast.icon + '.png' })
+    _react2.default.createElement('img', { src: 'http://openweathermap.org/img/w/' + forecast.icon + '.png',
+      title: forecast.title
+    })
   );
 };
 
@@ -26183,38 +26186,52 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var CityShow = function CityShow(_ref) {
   var forecast = _ref.forecast;
 
+  var skylineImg = "assets/" + forecast.name.toLowerCase() + ".jpg";
   return _react2.default.createElement(
-    "div",
-    { className: "city-show-div" },
+    "main",
+    null,
     _react2.default.createElement(
-      "h1",
-      null,
-      forecast.name
+      "div",
+      { className: "city-show-div" },
+      _react2.default.createElement(
+        "h1",
+        null,
+        forecast.name
+      ),
+      _react2.default.createElement("img", { src: "http://openweathermap.org/img/w/" + forecast.icon + ".png",
+        title: forecast.title
+      }),
+      _react2.default.createElement(
+        "h3",
+        null,
+        forecast.description
+      ),
+      _react2.default.createElement(
+        "h3",
+        null,
+        "Temperature: ",
+        forecast.temp,
+        " F"
+      ),
+      _react2.default.createElement(
+        "h3",
+        null,
+        "Humidity: ",
+        forecast.humidity,
+        " %"
+      ),
+      _react2.default.createElement(
+        "h3",
+        null,
+        "Wind: ",
+        forecast.wind,
+        " MPH"
+      )
     ),
-    _react2.default.createElement("img", { src: "http://openweathermap.org/img/w/" + forecast.icon + ".png" }),
     _react2.default.createElement(
-      "h3",
+      "div",
       null,
-      forecast.description
-    ),
-    _react2.default.createElement(
-      "h3",
-      null,
-      "Temperature ",
-      forecast.temp,
-      " F"
-    ),
-    _react2.default.createElement(
-      "h3",
-      null,
-      "Humidity ",
-      forecast.humidity
-    ),
-    _react2.default.createElement(
-      "h3",
-      null,
-      "Wind ",
-      forecast.wind
+      _react2.default.createElement("img", { className: "skyline", src: skylineImg })
     )
   );
 };
